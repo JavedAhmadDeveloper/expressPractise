@@ -1,10 +1,14 @@
 var express = require("express");
+const birds = require("./birds");
 var app = express();
 var PORT = 8000;
 
 app.get("/", (req, res) => {
   res.status(200).send({ name: "Hello World!" });
 });
+
+app.use("/birds", birds);
+
 // respond on multiple B after a and vefore cd
 app.get("/ab+cd", (req, res) => {
   res.send("ab+cd");
@@ -28,7 +32,7 @@ app.get(
     res.send("Hello from 2nd handler of fly!");
   }
 );
-
+//3 handlers for 1 route of book
 app
   .route("/book")
   .get((req, res) => {
